@@ -1,0 +1,76 @@
+{
+	"name": "theme-changer",
+	"displayName": "Theme Changer",
+	"description": "change theme day mode and night mode",
+	"version": "0.1.0",
+	"publisher": "ame-yu",
+	"repository": "ame-yu/theme-changer",
+	"engines": {
+		"vscode": "^1.48.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"onStartupFinished"
+	],
+	"main": "./out/extension.js",
+	"contributes": {
+		"commands": [
+			{
+				"command": "theme-changer.change-theme",
+				"title": "theme-changer:Change theme"
+			}
+		],
+		"configuration": {
+			"title": "",
+			"properties": {
+				"themechanger.path": {
+					"type": "string",
+					"description": "config path"
+				},
+				"themechanger.time": {
+					"type": "array",
+					"default": [
+						"6:00",
+						"18:00"
+					],
+					"description": "time"
+				},
+				"themechanger.theme": {
+					"type": "array",
+					"default": [
+						"Default Light+",
+						"Default Dark+"
+					],
+					"description": "theme array"
+				}
+			}
+		}
+	},
+	"scripts": {
+		"vscode:prepublish": "npm run compile",
+		"compile": "tsc -p ./",
+		"lint": "eslint src --ext ts",
+		"watch": "tsc -watch -p ./",
+		"pretest": "npm run compile && npm run lint",
+		"test": "node ./out/test/runTest.js"
+	},
+	"dependencies": {
+		"fs-extra": "^8.0.1"
+	},
+	"devDependencies": {
+		"@types/fs-extra": "^8.0.0",
+		"@types/vscode": "^1.48.0",
+		"@types/glob": "^7.1.3",
+		"@types/mocha": "^8.0.0",
+		"@types/node": "^14.0.27",
+		"eslint": "^7.6.0",
+		"@typescript-eslint/eslint-plugin": "^3.8.0",
+		"@typescript-eslint/parser": "^3.8.0",
+		"glob": "^7.1.6",
+		"mocha": "^8.0.1",
+		"typescript": "^3.8.3",
+		"vscode-test": "^1.4.0"
+	}
+}
