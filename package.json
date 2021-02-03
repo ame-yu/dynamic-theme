@@ -1,10 +1,10 @@
 {
-	"name": "theme-changer",
-	"displayName": "Theme Changer",
-	"description": "change theme day mode and night mode",
-	"version": "0.1.0",
+	"name": "dynamic-theme",
+	"displayName": "Dynamic Theme",
+	"description": "Change VSCode theme regularly. VSCode定时换主题",
+	"version": "0.2.0",
 	"publisher": "ame-yu",
-	"repository": "ame-yu/theme-changer",
+	"repository": "ame-yu/dynamic-theme",
 	"engines": {
 		"vscode": "^1.48.0"
 	},
@@ -18,37 +18,34 @@
 	"contributes": {
 		"commands": [
 			{
-				"command": "theme-changer.change-theme",
-				"title": "theme-changer:Change theme"
+				"command": "theme.refresh",
+				"title": "theme:Refresh"
 			}
 		],
 		"configuration": {
-			"title": "",
+			"title": "Dynamic Theme",
 			"properties": {
-				"themechanger.path": {
-					"type": "string",
-					"description": "config path"
-				},
-				"themechanger.time": {
+				"dynamicTheme.time": {
 					"type": "array",
 					"default": [
 						"6:00",
 						"18:00"
 					],
-					"description": "time"
+					"description": "Array of time,default is [\"6:00\",\"18:00\"]"
 				},
-				"themechanger.theme": {
+				"dynamicTheme.theme": {
 					"type": "array",
 					"default": [
 						"Default Light+",
 						"Default Dark+"
 					],
-					"description": "theme array"
+					"description": "Array of theme name,default is [\"Default Light+\",\"Default Dark+\"]"
 				}
 			}
 		}
 	},
 	"scripts": {
+		"packvsix": "vsce package",
 		"vscode:prepublish": "npm run compile",
 		"compile": "tsc -p ./",
 		"lint": "eslint src --ext ts",
